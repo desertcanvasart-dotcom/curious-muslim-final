@@ -23,7 +23,7 @@ export default function BlogCard({
   if (variant === "featured") {
     return (
       <Link
-        href={`/routes/blog/${slug}`}
+        href={`/blog/${slug}`}
         className={cn(
           "group block bg-white rounded-2xl shadow-soft overflow-hidden",
           "hover:shadow-xl transition-all duration-300",
@@ -91,7 +91,7 @@ export default function BlogCard({
   if (variant === "compact") {
     return (
       <Link
-        href={`/routes/blog/${slug}`}
+        href={`/blog/${slug}`}
         className={cn(
           "group flex gap-4 p-4 bg-white rounded-xl shadow-card hover:shadow-soft transition-all",
           className
@@ -126,7 +126,7 @@ export default function BlogCard({
   // Default variant
   return (
     <Link
-      href={`/routes/blog/${slug}`}
+      href={`/blog/${slug}`}
       className={cn(
         "group block bg-white rounded-xl shadow-card overflow-hidden",
         "hover:shadow-soft hover:-translate-y-1 transition-all duration-300",

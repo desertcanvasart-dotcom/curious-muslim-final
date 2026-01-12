@@ -15,34 +15,39 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left animate-slide-up">
+            {/* Eyebrow */}
+            <p className="text-white/80 text-sm font-medium tracking-wide uppercase mb-3">
+              Created by Muslim parents, for Muslim families
+            </p>
+
             <div className="inline-flex items-center gap-2 bg-[#F2C94C] text-[#3D5A6C] px-4 py-2 rounded-full font-semibold text-sm mb-6">
               <Star className="w-4 h-4 fill-current" />
               <span>Launching Ramadan 2026</span>
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 text-white">
-              Stories That Bring the Prophets Life to Your Home
+              Helping Your Child Fall in Love with the Prophet's Story
             </h1>
 
             <p className="text-xl text-white mb-8 leading-relaxed">
-              A beautifully illustrated Seerah for Muslim children ages 8-12.
-              Learn about Prophet Muhammad ﷺ through warm storytelling that
-              feels like sitting with a friend.
+              Gentle, age-appropriate stories that make learning about Prophet Muhammad ﷺ
+              feel like a warm conversation—not a lecture. For curious Muslim children
+              ages 8-12, and the parents who want to guide them with confidence.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link
-                href="/routes/book"
+                href="/blog"
                 className="btn-primary inline-flex items-center justify-center gap-2"
               >
-                <span>Get the Book</span>
+                <span>Explore the Stories</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
-                href="#book-preview"
+                href="/characters"
                 className="btn-secondary inline-flex items-center justify-center gap-2"
               >
-                <span>Read Sample Chapter</span>
+                <span>Meet the Characters</span>
               </Link>
             </div>
 

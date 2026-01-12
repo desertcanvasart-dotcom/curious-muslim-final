@@ -102,7 +102,7 @@ export default function NoorIntro() {
             </div>
 
             <Link
-              href="/routes/characters"
+              href="/characters"
               className="btn-primary inline-flex items-center gap-2"
             >
               <span>Meet All the Characters</span>

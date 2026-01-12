@@ -223,176 +223,163 @@ export default function BookFlip({ books }: BookFlipProps) {
             perspectiveOrigin: "50% 50%"
           }}
         >
-          {/* Book Base with 3D effect */}
+          {/* Book Base with 3D CSS effect */}
           <div
             className="relative mx-auto"
             style={{
               width: "100%",
               maxWidth: "900px",
-              height: "580px",
-              transformStyle: "preserve-3d",
-              transform: "rotateX(5deg)",
+              height: "520px",
             }}
           >
-            {/* Book Shadow on Table */}
-            <div
-              className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[90%] h-16 rounded-full blur-2xl opacity-40"
-              style={{
-                background: "radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, transparent 70%)",
-              }}
-            />
-
-            {/* Back Cover - Dark Hardcover */}
-            <div
-              className="absolute inset-0 rounded-lg"
-              style={{
-                background: "linear-gradient(145deg, #2d2d2d 0%, #1a1a1a 100%)",
-                transform: "translateZ(-20px)",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
-              }}
-            />
-
-            {/* Page Stack - Right Side (visible pages) */}
-            <div
-              className="absolute top-3 bottom-3 right-3"
-              style={{
-                width: "15px",
-                background: "linear-gradient(90deg, #d4d0c8 0%, #f5f2eb 30%, #ffffff 50%, #f5f2eb 70%, #d4d0c8 100%)",
-                transform: "translateZ(-10px)",
-                borderRadius: "0 3px 3px 0",
-                boxShadow: "inset 0 0 3px rgba(0,0,0,0.1)",
-              }}
+            {/* SVG Open Storybook */}
+            <svg
+              viewBox="0 0 900 520"
+              className="absolute inset-0 w-full h-full"
+              style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.15))" }}
             >
-              {/* Page lines */}
-              {[...Array(8)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-full"
-                  style={{
-                    height: "1px",
-                    background: "rgba(0,0,0,0.05)",
-                    top: `${12 + i * 11}%`,
-                  }}
-                />
-              ))}
-            </div>
+              <defs>
+                {/* Gradients */}
+                <linearGradient id="leftPageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FFF9F0" />
+                  <stop offset="50%" stopColor="#FDF5E6" />
+                  <stop offset="100%" stopColor="#F5E6D3" />
+                </linearGradient>
+                <linearGradient id="rightPageGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#FFF9F0" />
+                  <stop offset="50%" stopColor="#FDF5E6" />
+                  <stop offset="100%" stopColor="#F5E6D3" />
+                </linearGradient>
+                <linearGradient id="spineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#8B6914" />
+                  <stop offset="50%" stopColor="#C4A035" />
+                  <stop offset="100%" stopColor="#8B6914" />
+                </linearGradient>
+                <linearGradient id="coverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#5C7A4B" />
+                  <stop offset="100%" stopColor="#3D5A3C" />
+                </linearGradient>
+                <linearGradient id="bindingShadow" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="rgba(0,0,0,0.08)" />
+                  <stop offset="50%" stopColor="rgba(0,0,0,0.15)" />
+                  <stop offset="100%" stopColor="rgba(0,0,0,0.08)" />
+                </linearGradient>
+                {/* Page stack shadow */}
+                <filter id="pageShadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#000" floodOpacity="0.1"/>
+                </filter>
+              </defs>
 
-            {/* Spine */}
-            <div
-              className="absolute left-0 top-0 bottom-0 w-14 rounded-l-lg overflow-hidden"
-              style={{
-                background: "linear-gradient(90deg, #1a1a1a 0%, #2d2d2d 30%, #3a3a3a 50%, #2d2d2d 70%, #1a1a1a 100%)",
-                transform: "translateZ(-10px) rotateY(-3deg)",
-                transformOrigin: "left center",
-                boxShadow: "inset -5px 0 15px rgba(0,0,0,0.4)",
-              }}
-            >
-              {/* Gold decorative elements on spine */}
-              <div className="h-full flex flex-col items-center justify-between py-6">
-                <div className="w-8 h-1 bg-gradient-to-r from-transparent via-[#F2C94C] to-transparent rounded opacity-60" />
-                <div className="flex-1 flex items-center">
-                  <div
-                    className="text-[#F2C94C]/80 text-[10px] font-bold tracking-wider"
-                    style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-                  >
-                    STORIES OF THE PROPHETS
-                  </div>
-                </div>
-                <div className="w-8 h-1 bg-gradient-to-r from-transparent via-[#F2C94C] to-transparent rounded opacity-60" />
-              </div>
-            </div>
+              {/* Book shadow on surface */}
+              <ellipse cx="450" cy="500" rx="380" ry="20" fill="rgba(0,0,0,0.1)" />
 
-            {/* Front Cover / Open Book Area */}
-            <div
-              className="absolute inset-0 rounded-lg overflow-hidden bg-[#fdfbf7]"
-              style={{
-                marginLeft: "56px",
-                boxShadow: "0 10px 40px rgba(0,0,0,0.15), inset 0 0 100px rgba(0,0,0,0.03)",
-              }}
-            >
-              {/* Page texture overlay */}
-              <div
-                className="absolute inset-0 opacity-40 pointer-events-none"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-                }}
-              />
+              {/* Left cover (back, slightly visible) */}
+              <path d="M 50 50 L 430 60 L 430 460 L 50 450 Z" fill="url(#coverGrad)" opacity="0.3" />
 
-              {/* Center fold line / binding */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-8 pointer-events-none z-10">
-                <div className="h-full w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />
-              </div>
+              {/* Right cover (back, slightly visible) */}
+              <path d="M 850 50 L 470 60 L 470 460 L 850 450 Z" fill="url(#coverGrad)" opacity="0.3" />
 
-              {/* Two-page spread layout */}
+              {/* Left page stack (multiple layers for depth) */}
+              <g filter="url(#pageShadow)">
+                <path d="M 60 55 L 435 65 L 435 455 L 60 445 Z" fill="#E8DCC8" />
+                <path d="M 63 58 L 435 67 L 435 453 L 63 443 Z" fill="#EDE3D4" />
+                <path d="M 66 61 L 435 69 L 435 451 L 66 441 Z" fill="#F2E9DC" />
+                <path d="M 69 64 L 435 71 L 435 449 L 69 439 Z" fill="#F7F0E5" />
+              </g>
+
+              {/* Right page stack (multiple layers for depth) */}
+              <g filter="url(#pageShadow)">
+                <path d="M 840 55 L 465 65 L 465 455 L 840 445 Z" fill="#E8DCC8" />
+                <path d="M 837 58 L 465 67 L 465 453 L 837 443 Z" fill="#EDE3D4" />
+                <path d="M 834 61 L 465 69 L 465 451 L 834 441 Z" fill="#F2E9DC" />
+                <path d="M 831 64 L 465 71 L 465 449 L 831 439 Z" fill="#F7F0E5" />
+              </g>
+
+              {/* Left main page */}
+              <path d="M 72 67 L 435 73 L 435 447 L 72 437 Z" fill="url(#leftPageGrad)" />
+
+              {/* Right main page */}
+              <path d="M 828 67 L 465 73 L 465 447 L 828 437 Z" fill="url(#rightPageGrad)" />
+
+              {/* Center binding/spine */}
+              <rect x="435" y="50" width="30" height="420" fill="url(#spineGrad)" rx="2" />
+
+              {/* Spine decorative lines */}
+              <rect x="442" y="70" width="16" height="3" fill="#F2C94C" opacity="0.7" rx="1" />
+              <rect x="442" y="85" width="16" height="3" fill="#F2C94C" opacity="0.7" rx="1" />
+              <rect x="442" y="430" width="16" height="3" fill="#F2C94C" opacity="0.7" rx="1" />
+              <rect x="442" y="445" width="16" height="3" fill="#F2C94C" opacity="0.7" rx="1" />
+
+              {/* Center shadow for depth */}
+              <rect x="430" y="73" width="40" height="374" fill="url(#bindingShadow)" />
+
+              {/* Page edge lines (subtle) */}
+              <line x1="430" y1="80" x2="430" y2="440" stroke="#D4C4A8" strokeWidth="1" opacity="0.5" />
+              <line x1="470" y1="80" x2="470" y2="440" stroke="#D4C4A8" strokeWidth="1" opacity="0.5" />
+
+              {/* Decorative corner flourishes */}
+              <g stroke="#C9A86C" strokeWidth="2" fill="none" opacity="0.4">
+                {/* Left page corners */}
+                <path d="M 85 80 L 85 95 M 85 80 L 100 80" />
+                <path d="M 85 425 L 85 410 M 85 425 L 100 425" />
+                <path d="M 420 80 L 420 95 M 420 80 L 405 80" />
+                <path d="M 420 425 L 420 410 M 420 425 L 405 425" />
+                {/* Right page corners */}
+                <path d="M 480 80 L 480 95 M 480 80 L 495 80" />
+                <path d="M 480 425 L 480 410 M 480 425 L 495 425" />
+                <path d="M 815 80 L 815 95 M 815 80 L 800 80" />
+                <path d="M 815 425 L 815 410 M 815 425 L 800 425" />
+              </g>
+
+              {/* Subtle page curl on right side */}
+              <path d="M 815 420 Q 825 415, 820 430 Q 815 435, 815 420" fill="#E8DCC8" opacity="0.5" />
+            </svg>
+
+            {/* Content Area - positioned over the pages */}
+            <div className="absolute left-[8%] right-[8%] top-[14%] bottom-[14%]">
               <div className="relative h-full grid grid-cols-2">
-                {/* Left Page - Book Cover Art */}
-                <div className="relative p-8 flex flex-col items-center justify-center border-r border-gray-200/50 overflow-hidden">
-                  {/* Decorative corner flourishes */}
-                  <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-[#F2C94C]/30 rounded-tl-lg" />
-                  <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-[#F2C94C]/30 rounded-tr-lg" />
-                  <div className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-[#F2C94C]/30 rounded-bl-lg" />
-                  <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-[#F2C94C]/30 rounded-br-lg" />
-
+                {/* Left Page - Storybook Art */}
+                <div className="relative p-8 flex flex-col items-center justify-center overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={`cover-${currentPage}-${isFlipping}`}
-                      initial={{ opacity: 0, scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.96 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.4 }}
+                      exit={{ opacity: 0, scale: 0.96 }}
+                      transition={{ duration: 0.35 }}
                       className="flex flex-col items-center"
                     >
-                      {/* Book Cover Illustration */}
+                      {/* Storybook Cover Illustration */}
                       <div
-                        className="relative w-52 h-72 rounded-xl overflow-hidden"
+                        className="relative w-56 h-72 rounded-2xl overflow-hidden"
                         style={{
-                          backgroundColor: displayBook.coverColor,
-                          boxShadow: `
-                            0 25px 50px ${displayBook.coverColor}50,
-                            0 10px 20px rgba(0,0,0,0.2),
-                            inset 0 2px 0 rgba(255,255,255,0.2),
-                            inset 0 -2px 0 rgba(0,0,0,0.1)
-                          `,
+                          background: `linear-gradient(160deg, ${displayBook.coverColor} 0%, ${displayBook.coverColor}CC 100%)`,
+                          boxShadow: "0 14px 0 rgba(0,0,0,0.08), 0 20px 28px rgba(0,0,0,0.22)",
                         }}
                       >
-                        {/* Book cover shine effect */}
-                        <div
-                          className="absolute inset-0 opacity-30"
-                          style={{
-                            background: "linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 40%, transparent 60%, rgba(0,0,0,0.1) 100%)",
-                          }}
-                        />
+                        <div className="absolute inset-2 rounded-xl border-[6px] border-[#f9e7b6]" />
+                        <div className="absolute inset-6 rounded-lg border-2 border-[#9b6a34]" />
+                        <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/30" />
+                        <div className="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-white/20" />
 
-                        {/* Spine shadow on cover */}
-                        <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-black/25 to-transparent" />
-
-                        {/* Cover content */}
-                        <div className="relative h-full flex flex-col items-center justify-center p-6">
-                          {/* Decorative frame */}
-                          <div className="absolute inset-4 border-2 border-white/20 rounded-lg" />
-
-                          {/* Prophet emoji */}
-                          <span className="text-8xl mb-4 drop-shadow-xl">{displayBook.coverEmoji}</span>
-
-                          {/* Arabic name */}
-                          <p className="text-white text-2xl font-bold text-center drop-shadow-lg font-heading">
-                            {displayBook.arabicName}
+                        <div className="relative h-full flex flex-col items-center justify-center p-6 text-center">
+                          <span className="text-6xl drop-shadow">{displayBook.coverEmoji}</span>
+                          <p className="text-white text-base font-heading font-bold mt-3">
+                            {displayBook.title}
                           </p>
-
-                          {/* Subtitle */}
-                          <p className="text-white/70 text-sm text-center mt-2">
-                            {displayBook.prophet}
+                          <p className="text-white/80 text-xs uppercase tracking-wider mt-1">
+                            {displayBook.subtitle}
                           </p>
                         </div>
                       </div>
 
                       {/* Book number */}
-                      <div className="mt-8 flex items-center gap-3">
-                        <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#3D5A6C]/30 to-transparent" />
-                        <span className="text-[#3D5A6C]/60 text-sm font-medium">
+                      <div className="mt-5 flex items-center gap-3">
+                        <div className="w-10 h-px bg-gradient-to-r from-transparent via-[#7a5b3a]/40 to-transparent" />
+                        <span className="text-[#7a5b3a] text-sm font-medium">
                           Book {currentPage + 1} of {books.length}
                         </span>
-                        <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#3D5A6C]/30 to-transparent" />
+                        <div className="w-10 h-px bg-gradient-to-r from-transparent via-[#7a5b3a]/40 to-transparent" />
                       </div>
                     </motion.div>
                   </AnimatePresence>
@@ -406,7 +393,7 @@ export default function BookFlip({ books }: BookFlipProps) {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
+                      transition={{ duration: 0.35, delay: 0.1 }}
                       className="flex-1 flex flex-col"
                     >
                       {/* Status Badge */}
@@ -434,10 +421,13 @@ export default function BookFlip({ books }: BookFlipProps) {
                       </p>
 
                       {/* Divider */}
-                      <div className="w-16 h-1 rounded-full mb-4" style={{ backgroundColor: displayBook.coverColor + "40" }} />
+                      <div
+                        className="w-16 h-1 rounded-full mb-4"
+                        style={{ backgroundColor: displayBook.coverColor + "40" }}
+                      />
 
                       {/* Description */}
-                      <p className="text-gray-600 leading-relaxed mb-4 text-sm lg:text-base line-clamp-3">
+                      <p className="text-gray-700 leading-relaxed mb-4 text-sm lg:text-base line-clamp-3">
                         {displayBook.description}
                       </p>
 
@@ -494,7 +484,7 @@ export default function BookFlip({ books }: BookFlipProps) {
                       {/* Buttons */}
                       <div className="flex gap-3">
                         <Link
-                          href={`/routes/book/${displayBook.slug}`}
+                          href={`/book/${displayBook.slug}`}
                           className="flex-1 flex items-center justify-center gap-2 bg-[#3D5A6C] text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-[#2C4555] transition-colors"
                         >
                           <BookOpen className="w-4 h-4" />
@@ -511,8 +501,8 @@ export default function BookFlip({ books }: BookFlipProps) {
                   </AnimatePresence>
 
                   {/* Page number */}
-                  <div className="absolute bottom-4 right-6 text-gray-300 text-sm italic">
-                    — {currentPage + 1} —
+                  <div className="absolute bottom-4 right-6 text-[#d1b07a] text-sm italic">
+                    Page {currentPage + 1}
                   </div>
                 </div>
               </div>
@@ -529,53 +519,59 @@ export default function BookFlip({ books }: BookFlipProps) {
                 >
                   {/* The turning page */}
                   <div
-                    className="absolute top-0 bottom-0 bg-[#fdfbf7] origin-left overflow-hidden"
+                    className="absolute top-0 bottom-0 bg-[#fff1d3] origin-left overflow-hidden"
                     style={{
                       left: "50%",
                       right: 0,
-                      transform: flipDirection === "forward"
-                        ? `rotateY(${-180 * flipProgress}deg)`
-                        : `rotateY(${-180 + 180 * flipProgress}deg)`,
+                      transform:
+                        flipDirection === "forward"
+                          ? `rotateY(${-180 * flipProgress}deg)`
+                          : `rotateY(${-180 + 180 * flipProgress}deg)`,
                       transformStyle: "preserve-3d",
-                      boxShadow: flipProgress > 0.1 && flipProgress < 0.9
-                        ? `${flipDirection === "forward" ? "-" : ""}10px 0 30px rgba(0,0,0,${0.2 * Math.sin(flipProgress * Math.PI)})`
-                        : "none",
+                      boxShadow:
+                        flipProgress > 0.1 && flipProgress < 0.9
+                          ? `${flipDirection === "forward" ? "-" : ""}10px 0 30px rgba(0,0,0,${0.2 * Math.sin(flipProgress * Math.PI)})`
+                          : "none",
                     }}
                   >
                     {/* Front of page (current content) */}
                     <div
-                      className="absolute inset-0 p-8 flex flex-col items-center justify-center bg-[#fdfbf7]"
+                      className="absolute inset-0 p-8 flex flex-col items-center justify-center bg-[#fff1d3]"
                       style={{
                         backfaceVisibility: "hidden",
                       }}
                     >
-                      {/* Current book cover */}
                       <div
-                        className="w-40 h-56 rounded-lg flex items-center justify-center"
+                        className="w-48 h-60 rounded-2xl flex items-center justify-center"
                         style={{
-                          backgroundColor: displayBook.coverColor,
-                          boxShadow: `0 10px 30px ${displayBook.coverColor}40`,
+                          background: `linear-gradient(160deg, ${displayBook.coverColor} 0%, ${displayBook.coverColor}CC 100%)`,
+                          boxShadow: "0 12px 24px rgba(0,0,0,0.2)",
                         }}
                       >
-                        <div className="text-center">
-                          <span className="text-6xl">{displayBook.coverEmoji}</span>
-                          <p className="text-white/80 text-sm mt-2">{displayBook.arabicName}</p>
+                        <div className="text-center px-3">
+                          <div className="mx-auto mb-3 text-6xl">{displayBook.coverEmoji}</div>
+                          <p className="text-white text-sm font-heading font-bold">
+                            {displayBook.title}
+                          </p>
+                          <p className="text-white/80 text-[10px] uppercase tracking-[0.2em] mt-1">
+                            {displayBook.subtitle}
+                          </p>
                         </div>
                       </div>
-                      <p className="mt-4 text-gray-500 text-sm">{displayBook.subtitle}</p>
+                      <p className="mt-4 text-[#7a5b3a] text-sm">{displayBook.prophet}</p>
 
                       {/* Page curl shadow */}
                       <div
                         className="absolute inset-0 pointer-events-none"
                         style={{
-                          background: `linear-gradient(to left, rgba(0,0,0,${0.15 * flipProgress}) 0%, transparent 30%)`,
+                          background: `linear-gradient(to left, rgba(60,40,24,${0.15 * flipProgress}) 0%, transparent 30%)`,
                         }}
                       />
                     </div>
 
                     {/* Back of page (next content) */}
                     <div
-                      className="absolute inset-0 p-8 flex flex-col items-center justify-center bg-[#f8f5ef]"
+                      className="absolute inset-0 p-8 flex flex-col items-center justify-center bg-[#fff1d3]"
                       style={{
                         backfaceVisibility: "hidden",
                         transform: "rotateY(180deg)",
@@ -583,20 +579,24 @@ export default function BookFlip({ books }: BookFlipProps) {
                     >
                       {targetBook && (
                         <>
-                          {/* Next book cover */}
                           <div
-                            className="w-40 h-56 rounded-lg flex items-center justify-center"
+                            className="w-48 h-60 rounded-2xl flex items-center justify-center"
                             style={{
-                              backgroundColor: targetBook.coverColor,
-                              boxShadow: `0 10px 30px ${targetBook.coverColor}40`,
+                              background: `linear-gradient(160deg, ${targetBook.coverColor} 0%, ${targetBook.coverColor}CC 100%)`,
+                              boxShadow: "0 12px 24px rgba(0,0,0,0.2)",
                             }}
                           >
-                            <div className="text-center">
-                              <span className="text-6xl">{targetBook.coverEmoji}</span>
-                              <p className="text-white/80 text-sm mt-2">{targetBook.arabicName}</p>
+                            <div className="text-center px-3">
+                              <div className="mx-auto mb-3 text-6xl">{targetBook.coverEmoji}</div>
+                              <p className="text-white text-sm font-heading font-bold">
+                                {targetBook.title}
+                              </p>
+                              <p className="text-white/80 text-[10px] uppercase tracking-[0.2em] mt-1">
+                                {targetBook.subtitle}
+                              </p>
                             </div>
                           </div>
-                          <p className="mt-4 text-gray-500 text-sm">{targetBook.subtitle}</p>
+                          <p className="mt-4 text-[#7a5b3a] text-sm">{targetBook.prophet}</p>
                         </>
                       )}
 
@@ -604,7 +604,7 @@ export default function BookFlip({ books }: BookFlipProps) {
                       <div
                         className="absolute inset-0 pointer-events-none"
                         style={{
-                          background: `linear-gradient(to right, rgba(0,0,0,${0.1 * (1 - flipProgress)}) 0%, transparent 30%)`,
+                          background: `linear-gradient(to right, rgba(60,40,24,${0.1 * (1 - flipProgress)}) 0%, transparent 30%)`,
                         }}
                       />
                     </div>
@@ -615,7 +615,6 @@ export default function BookFlip({ books }: BookFlipProps) {
           </div>
         </div>
       </div>
-
       {/* Page Indicators */}
       <div className="flex justify-center gap-3 mt-12">
         {books.map((book, idx) => (

@@ -33,7 +33,7 @@ That's exactly why we created Curious Muslim—to make the Prophet's story acces
     `,
     author: "Curious Muslim Team",
     publishedAt: "2025-01-15",
-    featuredImage: "/images/blog/seerah-matters.jpg",
+    featuredImage: "",
     tags: ["Parenting", "Seerah", "Islamic Education"],
   },
   {
@@ -72,7 +72,7 @@ Islamic education should be a joy, not a chore. When children associate their fa
     `,
     author: "Curious Muslim Team",
     publishedAt: "2025-01-10",
-    featuredImage: "/images/blog/islamic-learning-fun.jpg",
+    featuredImage: "",
     tags: ["Parenting", "Tips", "Islamic Education"],
   },
   {
@@ -110,7 +110,7 @@ In "Stories of the Prophets," you'll experience Noor's storytelling firsthand. W
     `,
     author: "Curious Muslim Team",
     publishedAt: "2025-01-05",
-    featuredImage: "/images/blog/meet-noor.jpg",
+    featuredImage: "",
     tags: ["Book Preview", "Characters"],
   },
   {
@@ -157,7 +157,7 @@ Ramadan Mubarak to your family!
     `,
     author: "Curious Muslim Team",
     publishedAt: "2024-12-28",
-    featuredImage: "/images/blog/ramadan-reading.jpg",
+    featuredImage: "",
     tags: ["Ramadan", "Book Recommendations", "Parenting"],
   },
   {
@@ -203,7 +203,7 @@ You've got this, parents!
     `,
     author: "Curious Muslim Team",
     publishedAt: "2024-12-20",
-    featuredImage: "/images/blog/tough-questions.jpg",
+    featuredImage: "",
     tags: ["Parenting", "Faith", "Tips"],
   },
   {
@@ -258,7 +258,7 @@ Thank you for being part of this journey!
     `,
     author: "Curious Muslim Team",
     publishedAt: "2024-12-15",
-    featuredImage: "/images/blog/behind-scenes.jpg",
+    featuredImage: "",
     tags: ["Behind the Scenes", "Book Preview"],
   },
 ];

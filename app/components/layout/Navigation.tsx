@@ -11,11 +11,11 @@ interface NavigationProps {
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/routes/about", label: "About" },
-  { href: "/routes/book", label: "The Book" },
-  { href: "/routes/characters", label: "Characters" },
-  { href: "/routes/blog", label: "Blog" },
-  { href: "/routes/contact", label: "Contact" },
+  { href: "/about", label: "About" },
+  { href: "/book", label: "The Book" },
+  { href: "/characters", label: "Characters" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navigation({
@@ -46,7 +46,7 @@ export default function Navigation({
           );
         })}
         <Link
-          href="/routes/ask-noor"
+          href="/ask-noor"
           onClick={onLinkClick}
           className="mt-2 px-4 py-3 bg-[#F2C94C] text-[#3D5A6C] rounded-full font-semibold border-2 border-[#3D5A6C] hover:bg-[#E0B63A] transition-colors text-center"
         >
@@ -76,7 +76,7 @@ export default function Navigation({
         );
       })}
       <Link
-        href="/routes/ask-noor"
+        href="/ask-noor"
         className="ml-4 px-6 py-2 bg-[#F2C94C] hover:bg-[#E0B63A] text-[#3D5A6C] font-semibold rounded-full border-2 border-[#3D5A6C] transition-all duration-200"
       >
         Ask Noor AI

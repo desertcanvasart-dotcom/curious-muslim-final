@@ -36,13 +36,16 @@ export default function BookFeature() {
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-block bg-[#5C7A4B] text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+            The Book That Changes Everything
+          </div>
           <h2 className="text-4xl lg:text-5xl font-heading font-bold text-[#3D5A6C] mb-6">
-            A Seerah Book Like No Other
+            Finally, a Seerah Experience Your Child Will Ask For
           </h2>
           <p className="text-xl text-gray-600 leading-relaxed">
-            This is not just another history book. It is a conversation between
-            Noor and three curious children—Adam, Hana, and Mansour—who ask the
-            questions your child might be thinking.
+            Imagine your child asking <em>"Can we read more about the Prophet tonight?"</em>
+            This isn't just a book—it's a bonding experience that brings your family
+            closer to the Prophet's story, one gentle conversation at a time.
           </p>
         </div>
 
@@ -121,35 +124,36 @@ export default function BookFeature() {
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 bg-[#5C7A4B] text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
                   <Sparkles className="w-4 h-4" />
-                  <span>Launching February 1, 2026</span>
+                  <span>Launching Ramadan 2026</span>
                 </div>
 
                 <h4 className="text-2xl font-heading font-bold text-[#3D5A6C] mb-4">
-                  Pre-Order Now
+                  Be Part of the Journey
                 </h4>
 
                 <p className="text-gray-600 mb-6">
-                  Be among the first to receive this beautiful book. Perfect
-                  timing for Ramadan 2026!
+                  Join hundreds of families preparing to share this special
+                  experience with their children. Get early access and
+                  exclusive family resources.
                 </p>
 
                 <div className="space-y-3">
                   <Link
-                    href="/routes/book"
+                    href="#newsletter"
                     className="btn-primary w-full inline-block text-center"
                   >
-                    View Full Details
+                    Join the Waitlist
                   </Link>
                   <Link
-                    href="#newsletter"
+                    href="/book"
                     className="btn-secondary w-full inline-block text-center"
                   >
-                    Join Waitlist
+                    See What's Inside
                   </Link>
                 </div>
 
                 <p className="text-sm text-gray-500 mt-4">
-                  💰 Paperback: $16.99 • Hardcover: $24.99
+                  Paperback: $16.99 • Hardcover: $24.99
                 </p>
               </div>
             </div>

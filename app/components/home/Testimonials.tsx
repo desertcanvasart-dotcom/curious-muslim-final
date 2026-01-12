@@ -85,32 +85,32 @@ export default function Testimonials() {
         </div>
 
         {/* CTA Box */}
-        <div className="bg-gradient-to-r from-[#3D5A6C] to-[#5C7A4B] rounded-3xl p-8 lg:p-12 text-center text-white shadow-xl">
+        <div id="newsletter" className="bg-gradient-to-r from-[#3D5A6C] to-[#5C7A4B] rounded-3xl p-8 lg:p-12 text-center text-white shadow-xl">
           <h3 className="text-3xl lg:text-4xl font-heading font-bold mb-4">
-            Join 500+ Families on the Waitlist
+            Join Our Growing Community
           </h3>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Be the first to know when the book launches. Plus, get exclusive
-            Ramadan activities and resources for your family.
+            Become part of a community of Muslim families raising curious, confident children.
+            Receive gentle parenting tips, free resources, and updates on our journey together.
           </p>
 
-          {/* Newsletter Form Placeholder */}
+          {/* Newsletter Form */}
           <div className="max-w-md mx-auto">
             <form className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Your email address"
                 className="flex-1 px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#F2C94C]"
               />
               <button
                 type="submit"
                 className="bg-[#F2C94C] hover:bg-[#E0B63A] text-[#3D5A6C] font-semibold px-8 py-4 rounded-full transition-colors whitespace-nowrap"
               >
-                Join Waitlist
+                Join the Community
               </button>
             </form>
             <p className="text-sm text-white/70 mt-4">
-              No spam. Just occasional updates about the book launch.
+              We respect your inbox. Only meaningful updates, no spam—ever.
             </p>
           </div>
         </div>

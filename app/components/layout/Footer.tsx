@@ -63,7 +63,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/routes/about"
+                  href="/about"
                   className="text-white/90 hover:text-[#F2C94C] transition-colors"
                 >
                   About Us
@@ -71,7 +71,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/routes/book"
+                  href="/book"
                   className="text-white/90 hover:text-[#F2C94C] transition-colors"
                 >
                   The Book
@@ -79,7 +79,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/routes/characters"
+                  href="/characters"
                   className="text-white/90 hover:text-[#F2C94C] transition-colors"
                 >
                   Characters
@@ -87,7 +87,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/routes/blog"
+                  href="/blog"
                   className="text-white/90 hover:text-[#F2C94C] transition-colors"
                 >
                   Blog
@@ -95,10 +95,18 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/routes/faq"
+                  href="/faq"
                   className="text-white/90 hover:text-[#F2C94C] transition-colors"
                 >
                   FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/testimonials"
+                  className="text-white/90 hover:text-[#F2C94C] transition-colors"
+                >
+                  Testimonials
                 </Link>
               </li>
             </ul>
@@ -112,7 +120,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/routes/contact"
+                  href="/contact"
                   className="text-white/90 hover:text-[#F2C94C] transition-colors"
                 >
                   Contact Us
@@ -120,7 +128,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/routes/help"
+                  href="/help"
                   className="text-white/90 hover:text-[#F2C94C] transition-colors"
                 >
                   Help Center
@@ -128,7 +136,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/routes/privacy"
+                  href="/privacy"
                   className="text-white/90 hover:text-[#F2C94C] transition-colors"
                 >
                   Privacy Policy
@@ -136,7 +144,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/routes/terms"
+                  href="/terms"
                   className="text-white/90 hover:text-[#F2C94C] transition-colors"
                 >
                   Terms of Service

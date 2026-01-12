@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Quicksand, Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
+import ConditionalLayout from "./components/layout/ConditionalLayout";
 import EntranceAnimation from "./components/entrance/EntranceAnimation";
 
 const quicksand = Quicksand({
@@ -49,9 +48,7 @@ export default function RootLayout({
     <html lang="en" className={`${quicksand.variable} ${poppins.variable}`}>
       <body className="antialiased">
         <EntranceAnimation>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
+          <ConditionalLayout>{children}</ConditionalLayout>
         </EntranceAnimation>
       </body>
     </html>
