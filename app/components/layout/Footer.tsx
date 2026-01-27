@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Mail } from "lucide-react";
+import { Facebook, Instagram, Mail, Youtube } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,9 +16,7 @@ export default function Footer() {
                 <h3 className="text-2xl font-heading font-bold text-white mb-0">
                   Curious Muslim
                 </h3>
-                <p className="text-[#F2C94C] text-sm">
-                  Stories of the Prophets
-                </p>
+                <p className="text-[#F2C94C] text-sm">Stories</p>
               </div>
             </div>
             <p className="text-white/90 mb-4 max-w-md">
@@ -44,6 +42,15 @@ export default function Footer() {
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href="https://youtube.com/@curiousmuslim"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-white/10 hover:bg-[#F2C94C] hover:text-[#3D5A6C] rounded-full flex items-center justify-center transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-5 h-5" />
               </a>
               <a
                 href="mailto:hello@curiousmuslim.com"
@@ -74,7 +81,7 @@ export default function Footer() {
                   href="/book"
                   className="text-white/90 hover:text-[#F2C94C] transition-colors"
                 >
-                  The Book
+                  Stories
                 </Link>
               </li>
               <li>

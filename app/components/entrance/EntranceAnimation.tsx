@@ -220,18 +220,30 @@ export default function EntranceAnimation({ children }: EntranceAnimationProps) 
 }
 
 // Stars component
+type Star = {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  delay: number;
+  duration: number;
+};
+
 function Stars({ phase }: { phase: string }) {
-  // Generate stars only once
-  const [stars] = useState(() =>
-    Array.from({ length: 40 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2 + 1,
-      delay: Math.random() * 1,
-      duration: Math.random() * 1.5 + 0.5,
-    }))
-  );
+  const [stars, setStars] = useState<Star[]>([]);
+
+  useEffect(() => {
+    setStars(
+      Array.from({ length: 40 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 2 + 1,
+        delay: Math.random() * 1,
+        duration: Math.random() * 1.5 + 0.5,
+      }))
+    );
+  }, []);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">

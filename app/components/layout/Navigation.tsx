@@ -12,7 +12,7 @@ interface NavigationProps {
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/book", label: "The Book" },
+  { href: "/book", label: "Stories" },
   { href: "/characters", label: "Characters" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },

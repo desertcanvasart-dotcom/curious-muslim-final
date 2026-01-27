@@ -34,13 +34,6 @@ export default function FinalCTA() {
               <span>Explore the Stories</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link
-              href="#newsletter"
-              className="inline-flex items-center justify-center gap-2 bg-[#F2C94C] text-[#3D5A6C] font-semibold px-8 py-4 rounded-full hover:bg-[#E0B63A] transition-colors"
-            >
-              <span>Join the Waitlist</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
           </div>
 
           {/* Trust Note */}

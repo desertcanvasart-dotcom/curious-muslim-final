@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -10,22 +11,21 @@ export default function NoorIntro() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Noor Image Placeholder */}
           <div className="order-2 lg:order-1">
-            <div className="relative">
-              <div className="bg-gradient-to-br from-[#6A8E9E] to-[#3D5A6C] rounded-3xl p-12 text-center shadow-xl">
-                <div className="text-8xl mb-4">👨‍🏫</div>
-                <h3 className="text-3xl font-heading font-bold text-white mb-2">
-                  Noor
-                </h3>
-                <p className="text-white/90 text-lg">The Storyteller</p>
+            <div className="relative text-center">
+              <div className="mx-auto w-[22rem] max-w-full rounded-3xl bg-white p-5 shadow-xl">
+                <Image
+                  src="/images/characters/noor-portrait.png"
+                  alt="Noor"
+                  width={512}
+                  height={512}
+                  className="mx-auto h-auto w-full rounded-2xl object-contain"
+                  priority
+                />
               </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute -top-6 -right-6 bg-[#F2C94C] rounded-full p-6 shadow-lg">
-                <span className="text-4xl">📚</span>
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-[#A4C997] rounded-full p-6 shadow-lg">
-                <span className="text-4xl">✨</span>
-              </div>
+              <h3 className="mt-6 text-3xl font-heading font-bold text-[#3D5A6C]">
+                Noor
+              </h3>
+              <p className="text-[#5C7A4B] text-lg">The Storyteller</p>
             </div>
           </div>
 

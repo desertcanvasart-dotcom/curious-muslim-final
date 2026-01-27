@@ -58,9 +58,7 @@ export default function Header() {
               <h1 className="text-2xl font-heading font-bold text-primary mb-0">
                 Curious Muslim
               </h1>
-              <p className="text-xs text-brand-sage-green -mt-1">
-                Stories of the Prophets
-              </p>
+              <p className="text-xs text-brand-sage-green -mt-1">Stories</p>
             </div>
           </Link>
 

@@ -527,14 +527,8 @@ export default function BlogPage() {
               <input
                 type="email"
                 placeholder="Your email address"
-                className="flex-1 px-6 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#F2C94C]"
+                className="flex-1 px-6 py-3 rounded-full bg-white text-[#2C3E50] border border-white/60 placeholder:text-[#6A8E9E] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F2C94C]"
               />
-              <button
-                type="submit"
-                className="bg-[#F2C94C] hover:bg-[#E0B63A] text-[#3D5A6C] font-semibold px-6 py-3 rounded-full transition-colors whitespace-nowrap"
-              >
-                Join the Curious Parents List
-              </button>
             </form>
 
             <p className="text-sm text-white/70 mt-4">

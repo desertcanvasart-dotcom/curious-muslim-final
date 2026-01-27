@@ -85,31 +85,28 @@ export default function Testimonials() {
         </div>
 
         {/* CTA Box */}
-        <div id="newsletter" className="bg-gradient-to-r from-[#3D5A6C] to-[#5C7A4B] rounded-3xl p-8 lg:p-12 text-center text-white shadow-xl">
+        <div
+          id="newsletter"
+          className="bg-gradient-to-r from-[#F5EFD4] to-[#FFF7E6] rounded-3xl p-8 lg:p-12 text-center text-[#3D5A6C] shadow-xl"
+        >
           <h3 className="text-3xl lg:text-4xl font-heading font-bold mb-4">
             Join Our Growing Community
           </h3>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-[#3D5A6C]/80 mb-8 max-w-2xl mx-auto">
             Become part of a community of Muslim families raising curious, confident children.
             Receive gentle parenting tips, free resources, and updates on our journey together.
           </p>
 
           {/* Newsletter Form */}
           <div className="max-w-md mx-auto">
-            <form className="flex flex-col sm:flex-row gap-3">
+            <form className="flex flex-col gap-3">
               <input
                 type="email"
                 placeholder="Your email address"
-                className="flex-1 px-6 py-4 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#F2C94C]"
+                className="w-full px-6 py-4 rounded-full text-[#2C3E50] bg-white border border-[#E6DCC2] shadow-sm placeholder:text-[#6A8E9E] focus:outline-none focus:ring-2 focus:ring-[#F2C94C]"
               />
-              <button
-                type="submit"
-                className="bg-[#F2C94C] hover:bg-[#E0B63A] text-[#3D5A6C] font-semibold px-8 py-4 rounded-full transition-colors whitespace-nowrap"
-              >
-                Join the Community
-              </button>
             </form>
-            <p className="text-sm text-white/70 mt-4">
+            <p className="text-sm text-[#3D5A6C]/70 mt-4">
               We respect your inbox. Only meaningful updates, no spam—ever.
             </p>
           </div>

@@ -17,7 +17,6 @@ import {
   BookMarked,
 } from "lucide-react";
 import { books, Book } from "@/app/lib/constants/books";
-import BookFlip from "@/app/components/ui/BookFlip";
 
 type ViewMode = "book" | "grid";
 
@@ -57,7 +56,7 @@ export default function BooksPage() {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
-              Stories of the Prophets
+              Stories
             </h1>
 
             <p className="text-xl text-white leading-relaxed mb-8">
@@ -127,7 +126,7 @@ export default function BooksPage() {
         </div>
       </section>
 
-      {/* Book Flip View */}
+      {/* Book Flip View - Heyzine Embed */}
       {viewMode === "book" && (
         <section className="section-padding">
           <div className="container-custom">
@@ -135,8 +134,39 @@ export default function BooksPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
+              className="max-w-5xl mx-auto"
             >
-              <BookFlip books={books} />
+              {/* Heyzine Flipbook */}
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+                <div className="relative w-full" style={{ paddingBottom: "70%" }}>
+                  <iframe
+                    allowFullScreen
+                    allow="clipboard-write"
+                    scrolling="no"
+                    className="absolute top-0 left-0 w-full h-full border-0"
+                    src="https://heyzine.com/flip-book/e66a9bd7c1.html"
+                    title="Curious Muslim Book"
+                  />
+                </div>
+              </div>
+
+              {/* Read More Button */}
+              <div className="text-center mt-8">
+                <a
+                  href="https://heyzine.com/flip-book/e66a9bd7c1.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#3D5A6C] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#2d4a5c] transition-colors shadow-lg hover:shadow-xl"
+                >
+                  <BookOpen className="w-5 h-5" />
+                  Read More
+                </a>
+              </div>
+
+              {/* Instructions */}
+              <p className="text-center text-gray-500 mt-6 text-sm">
+                Click and drag to flip pages, or use the navigation arrows
+              </p>
             </motion.div>
           </div>
         </section>

@@ -14,6 +14,7 @@ import {
   AlertCircle,
   Instagram,
   Facebook,
+  Youtube,
   HelpCircle,
   BookOpen,
   Users,
@@ -329,12 +330,13 @@ export default function ContactPage() {
                 <p className="text-gray-600 text-sm mb-4">
                   Stay updated with behind-the-scenes content and announcements
                 </p>
-                <div className="flex gap-3">
+                <div className="flex gap-4">
                   <a
                     href="https://instagram.com/curiousmuslim"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
+                    className="w-10 h-10 bg-white/10 hover:bg-[#F2C94C] hover:text-[#3D5A6C] rounded-full flex items-center justify-center transition-colors"
+                    aria-label="Instagram"
                   >
                     <Instagram className="w-5 h-5" />
                   </a>
@@ -342,9 +344,19 @@ export default function ContactPage() {
                     href="https://facebook.com/curiousmuslim"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-[#1877F2] rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform"
+                    className="w-10 h-10 bg-white/10 hover:bg-[#F2C94C] hover:text-[#3D5A6C] rounded-full flex items-center justify-center transition-colors"
+                    aria-label="Facebook"
                   >
                     <Facebook className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://youtube.com/@curiousmuslim"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white/10 hover:bg-[#F2C94C] hover:text-[#3D5A6C] rounded-full flex items-center justify-center transition-colors"
+                    aria-label="YouTube"
+                  >
+                    <Youtube className="w-5 h-5" />
                   </a>
                 </div>
               </div>

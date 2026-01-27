@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -8,18 +9,18 @@ import {
   Heart,
   BookOpen,
   Star,
-  ChevronRight,
   Quote,
   Users,
+  MessageCircle,
 } from "lucide-react";
 import { characters, getCharacterById } from "@/app/lib/constants/characters";
 import { chapters, getChaptersByCharacter } from "@/app/lib/constants/chapters";
 
-const characterEmojis: Record<string, string> = {
-  noor: "🌟",
-  adam: "👦",
-  hana: "👧",
-  mansour: "😄",
+const characterImages: Record<string, string> = {
+  noor: "/images/characters/noor-head.png",
+  adam: "/images/characters/adam-head.png",
+  hana: "/images/characters/hana-head.png",
+  mansour: "/images/characters/mansour-head.png",
 };
 
 const characterRoles: Record<string, string> = {
@@ -43,6 +44,19 @@ const characterQuotes: Record<string, string> = {
   mansour: "You know what's cool? The Prophet had a great sense of humor too! He used to smile a lot.",
 };
 
+// Playful offsets for children cards
+const childrenOffsets = [
+  { rotate: -2, translateY: 0 },
+  { rotate: 1, translateY: 12 },
+  { rotate: -1, translateY: -8 },
+];
+
+const childrenColors = {
+  adam: { bg: "from-blue-50 to-indigo-50", accent: "#4A90A4" },
+  hana: { bg: "from-pink-50 to-rose-50", accent: "#E88B8C" },
+  mansour: { bg: "from-amber-50 to-yellow-50", accent: "#F2C94C" },
+};
+
 export default function CharactersPage() {
   const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null);
 
@@ -54,17 +68,129 @@ export default function CharactersPage() {
     ? getChaptersByCharacter(selectedCharacter)
     : [];
 
+  const noor = characters.find(c => c.id === "noor");
+  const childrenCharacters = characters.filter(c => c.id !== "noor");
+
   return (
     <div className="bg-[#FDFBF7]">
-      {/* Hero Section */}
+      {/* Hero Section with Character Avatars */}
       <section className="relative bg-gradient-to-br from-[#3D5A6C] to-[#5C7A4B] text-white overflow-hidden min-h-[550px] flex items-center">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[url('/images/pattern.svg')] bg-repeat opacity-20" />
         </div>
 
-        <div className="container-custom py-16 relative z-10 w-full">
+        {/* Floating Character Avatars - Left Side */}
+        <motion.div
+          className="absolute left-[5%] top-[20%] hidden lg:block"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
           <motion.div
-            className="max-w-3xl mx-auto text-center"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm p-1 shadow-lg"
+          >
+            <Image
+              src={characterImages.noor}
+              alt="Noor"
+              width={80}
+              height={80}
+              className="w-full h-full object-contain rounded-full"
+            />
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="absolute left-[12%] bottom-[25%] hidden lg:block"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm p-1 shadow-lg"
+          >
+            <Image
+              src={characterImages.adam}
+              alt="Adam"
+              width={64}
+              height={64}
+              className="w-full h-full object-contain rounded-full"
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Floating Character Avatars - Right Side */}
+        <motion.div
+          className="absolute right-[8%] top-[25%] hidden lg:block"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+            className="w-18 h-18 rounded-full bg-white/20 backdrop-blur-sm p-1 shadow-lg"
+          >
+            <Image
+              src={characterImages.hana}
+              alt="Hana"
+              width={72}
+              height={72}
+              className="w-[72px] h-[72px] object-contain rounded-full"
+            />
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="absolute right-[15%] bottom-[20%] hidden lg:block"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
+            className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm p-1 shadow-lg"
+          >
+            <Image
+              src={characterImages.mansour}
+              alt="Mansour"
+              width={56}
+              height={56}
+              className="w-full h-full object-contain rounded-full"
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Decorative stars/sparkles */}
+        <motion.div
+          className="absolute left-[20%] top-[15%] text-[#F2C94C] hidden md:block"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <Sparkles className="w-6 h-6" />
+        </motion.div>
+        <motion.div
+          className="absolute right-[25%] top-[20%] text-[#F2C94C] hidden md:block"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
+          transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+        >
+          <Star className="w-5 h-5" />
+        </motion.div>
+        <motion.div
+          className="absolute right-[10%] bottom-[40%] text-[#F2C94C] hidden md:block"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.8, 0.4] }}
+          transition={{ duration: 1.8, repeat: Infinity, delay: 1 }}
+        >
+          <Sparkles className="w-4 h-4" />
+        </motion.div>
+
+        <div className="container-custom relative z-10 py-12">
+          <motion.div
+            className="max-w-2xl mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -78,24 +204,29 @@ export default function CharactersPage() {
               Meet the Characters
             </h1>
 
-            <p className="text-xl text-white leading-relaxed mb-8">
-              Four friends guide you through Prophet Muhammad&apos;s life —
-              each with their own curiosity and perspective.
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8">
+              A wise storyteller and three curious children explore the
+              beautiful life of Prophet Muhammad ﷺ together.
             </p>
 
-            {/* Character Quick Select */}
-            <div className="flex justify-center gap-4 flex-wrap">
-              {characters.map((char) => (
-                <motion.button
+            {/* Mobile character row */}
+            <div className="flex justify-center gap-3 lg:hidden">
+              {characters.map((char, index) => (
+                <motion.div
                   key={char.id}
-                  onClick={() => setSelectedCharacter(char.id)}
-                  className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + index * 0.1 }}
+                  className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm p-1"
                 >
-                  <span className="text-xl">{characterEmojis[char.id]}</span>
-                  <span>{char.name}</span>
-                </motion.button>
+                  <Image
+                    src={characterImages[char.id]}
+                    alt={char.name}
+                    width={56}
+                    height={56}
+                    className="w-full h-full object-contain rounded-full"
+                  />
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -112,126 +243,232 @@ export default function CharactersPage() {
         </div>
       </section>
 
-      {/* Character Cards Grid */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {characters.map((character, index) => (
-              <motion.div
-                key={character.id}
-                className="relative group"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div
-                  className="bg-white rounded-3xl shadow-card hover:shadow-soft transition-all duration-300 overflow-hidden cursor-pointer h-full flex flex-col group/card hover:-translate-y-1"
-                  onClick={() =>
-                    setSelectedCharacter(
-                      selectedCharacter === character.id ? null : character.id
-                    )
-                  }
-                >
-                  {/* Character Header */}
-                  <div
-                    className="p-8 relative overflow-hidden"
-                    style={{ backgroundColor: character.color + "15" }}
-                  >
-                    <div className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-20 group-hover/card:scale-110 transition-transform duration-500"
-                      style={{ backgroundColor: character.color, transform: "translate(30%, -30%)" }}
-                    />
+      {/* NOOR - The Storyteller - Large Featured Card */}
+      {noor && (
+        <section className="section-padding pb-8">
+          <div className="container-custom">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-5xl mx-auto"
+            >
+              <div className="relative bg-gradient-to-br from-[#3D5A6C] to-[#2A4A5C] rounded-[2rem] overflow-hidden shadow-xl">
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#5C7A4B]/20 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#F2C94C]/10 rounded-full blur-2xl" />
 
-                    <div className="flex items-start gap-6">
-                      <div
-                        className="w-24 h-24 rounded-2xl flex items-center justify-center text-5xl flex-shrink-0 group-hover/card:scale-105 transition-transform duration-300"
-                        style={{ backgroundColor: character.color + "30" }}
-                      >
-                        {characterEmojis[character.id]}
+                <div className="relative z-10 p-8 md:p-12">
+                  <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                    {/* Noor's Image - Large */}
+                    <motion.div
+                      className="relative flex-shrink-0"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-[#F2C94C]/30 to-[#5C7A4B]/30 p-2">
+                        <div className="w-full h-full rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                          <Image
+                            src={characterImages.noor}
+                            alt="Noor"
+                            width={200}
+                            height={200}
+                            className="w-40 h-40 md:w-48 md:h-48 object-contain"
+                          />
+                        </div>
+                      </div>
+                      {/* Storyteller badge */}
+                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#F2C94C] text-[#3D5A6C] px-4 py-1.5 rounded-full font-bold text-sm whitespace-nowrap shadow-lg">
+                        ✨ The Storyteller
+                      </div>
+                    </motion.div>
+
+                    {/* Noor's Content */}
+                    <div className="flex-1 text-center lg:text-left">
+                      <div className="flex items-center justify-center lg:justify-start gap-3 mb-3">
+                        <h2 className="text-4xl md:text-5xl font-heading font-bold text-white">
+                          Noor
+                        </h2>
+                        <span className="text-2xl font-arabic text-[#F2C94C]">
+                          {noor.arabicName}
+                        </span>
                       </div>
 
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-1">
-                          <h2 className="text-2xl font-heading font-bold text-[#3D5A6C]">
-                            {character.name}
-                          </h2>
-                          <span
-                            className="text-lg font-arabic"
-                            style={{ color: character.color }}
-                          >
-                            {character.arabicName}
-                          </span>
+                      <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-6">
+                        {noor.description}
+                      </p>
+
+                      {/* Quote */}
+                      <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-6">
+                        <Quote className="w-8 h-8 text-[#F2C94C] mb-3" />
+                        <p className="text-white text-lg italic leading-relaxed">
+                          &quot;{characterQuotes.noor}&quot;
+                        </p>
+                      </div>
+
+                      {/* Stats/Info */}
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-white/10 rounded-xl p-4">
+                          <Heart className="w-5 h-5 text-[#E88B8C] mb-2" />
+                          <p className="text-white/80 text-sm font-medium">Personality</p>
+                          <p className="text-white text-sm">{noor.personality}</p>
                         </div>
-                        {/* Role Label */}
-                        <p className="text-sm font-semibold mb-2" style={{ color: character.color }}>
-                          {characterRoles[character.id]}
-                        </p>
-                        <p className="text-gray-600 line-clamp-2">
-                          {character.description}
-                        </p>
+                        <div className="bg-white/10 rounded-xl p-4">
+                          <Sparkles className="w-5 h-5 text-[#F2C94C] mb-2" />
+                          <p className="text-white/80 text-sm font-medium">Fun Fact</p>
+                          <p className="text-white text-sm">{noor.funFact}</p>
+                        </div>
+                      </div>
+
+                      {/* CTA */}
+                      <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                        <button
+                          onClick={() => {
+                            setSelectedCharacter("noor");
+                            document.getElementById("chapters-section")?.scrollIntoView({ behavior: "smooth" });
+                          }}
+                          className="bg-[#F2C94C] hover:bg-[#E5BC3F] text-[#3D5A6C] px-6 py-3 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2"
+                        >
+                          <BookOpen className="w-5 h-5" />
+                          Explore Noor&apos;s Stories
+                        </button>
+                        <Link
+                          href="/ask-noor"
+                          className="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2"
+                        >
+                          <MessageCircle className="w-5 h-5" />
+                          Ask Noor AI
+                        </Link>
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
-                  {/* Character Details */}
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="space-y-4 flex-1">
-                      {/* Best For */}
-                      <div className="bg-gradient-to-r from-[#F5EFD4] to-[#F5EFD4]/50 rounded-xl p-4 border-l-4" style={{ borderColor: character.color }}>
-                        <p className="text-[#3D5A6C] text-sm">
-                          <span className="font-semibold">Best for </span>
-                          {characterBestFor[character.id]}
-                        </p>
+      {/* The Children - Playful Scattered Layout */}
+      <section className="section-padding pt-8">
+        <div className="container-custom">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-sm font-medium text-[#5C7A4B] uppercase tracking-wider mb-3">
+              Noor&apos;s curious students
+            </p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#3D5A6C] mb-4">
+              The Three Young Learners
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Each child brings their unique perspective and questions to Noor&apos;s stories,
+              making every lesson an adventure.
+            </p>
+          </motion.div>
+
+          {/* Playful scattered cards */}
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+            {childrenCharacters.map((character, index) => {
+              const offset = childrenOffsets[index];
+              const colors = childrenColors[character.id as keyof typeof childrenColors];
+
+              return (
+                <motion.div
+                  key={character.id}
+                  className="relative"
+                  initial={{ opacity: 0, y: 30, rotate: offset.rotate }}
+                  whileInView={{ opacity: 1, y: offset.translateY, rotate: offset.rotate }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15, duration: 0.5 }}
+                  whileHover={{
+                    y: offset.translateY - 8,
+                    rotate: 0,
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  <div
+                    className={`bg-gradient-to-br ${colors.bg} rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white h-full`}
+                  >
+                    {/* Character header */}
+                    <div className="flex items-center gap-4 mb-5">
+                      <div
+                        className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-md"
+                        style={{ backgroundColor: colors.accent + "20" }}
+                      >
+                        <Image
+                          src={characterImages[character.id]}
+                          alt={character.name}
+                          width={72}
+                          height={72}
+                          className="w-16 h-16 object-contain"
+                        />
                       </div>
-
-                      {/* Personality */}
                       <div>
-                        <div className="flex items-center gap-2 mb-2">
-                          <Heart className="w-4 h-4" style={{ color: character.color }} />
-                          <span className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
-                            Personality
-                          </span>
-                        </div>
-                        <p className="text-gray-600 text-sm">{character.personality}</p>
-                      </div>
-
-                      {/* Fun Fact */}
-                      <div className="bg-[#F5EFD4] rounded-xl p-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Sparkles className="w-4 h-4 text-[#F2C94C]" />
-                          <span className="text-sm font-semibold text-[#3D5A6C]">
-                            Fun Fact
-                          </span>
-                        </div>
-                        <p className="text-gray-600 text-sm">{character.funFact}</p>
-                      </div>
-
-                      {/* Quote */}
-                      <div className="border-l-4 pl-4" style={{ borderColor: character.color }}>
-                        <Quote className="w-5 h-5 mb-2" style={{ color: character.color }} />
-                        <p className="text-gray-600 text-sm italic">
-                          &quot;{characterQuotes[character.id]}&quot;
+                        <h3 className="text-xl font-heading font-bold text-[#3D5A6C]">
+                          {character.name}
+                        </h3>
+                        <p
+                          className="text-sm font-semibold"
+                          style={{ color: colors.accent }}
+                        >
+                          {characterRoles[character.id]}
+                        </p>
+                        <p className="text-xs font-arabic text-gray-500">
+                          {character.arabicName}
                         </p>
                       </div>
                     </div>
 
-                    {/* View Chapters Button */}
+                    {/* Best for badge */}
+                    <div
+                      className="rounded-xl p-3 mb-4 border-l-4"
+                      style={{
+                        backgroundColor: colors.accent + "10",
+                        borderColor: colors.accent
+                      }}
+                    >
+                      <p className="text-sm text-[#3D5A6C]">
+                        <span className="font-semibold">Best for </span>
+                        {characterBestFor[character.id]}
+                      </p>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                      {character.description}
+                    </p>
+
+                    {/* Quote bubble */}
+                    <div className="relative bg-white rounded-2xl p-4 shadow-sm">
+                      <div
+                        className="absolute -top-2 left-6 w-4 h-4 bg-white rotate-45"
+                      />
+                      <p className="text-gray-600 text-sm italic relative z-10">
+                        &quot;{characterQuotes[character.id]}&quot;
+                      </p>
+                    </div>
+
+                    {/* View chapters button */}
                     <button
-                      className="mt-6 w-full py-3 rounded-xl font-semibold text-white transition-colors flex items-center justify-center gap-2"
-                      style={{ backgroundColor: character.color }}
-                      onClick={(e) => {
-                        e.stopPropagation();
+                      onClick={() => {
                         setSelectedCharacter(character.id);
                         document.getElementById("chapters-section")?.scrollIntoView({ behavior: "smooth" });
                       }}
+                      className="mt-5 w-full py-2.5 rounded-xl font-semibold text-white transition-all hover:opacity-90 flex items-center justify-center gap-2 text-sm"
+                      style={{ backgroundColor: colors.accent }}
                     >
                       <BookOpen className="w-4 h-4" />
                       See {character.name}&apos;s Chapters
                     </button>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -286,7 +523,15 @@ export default function CharactersPage() {
                     selectedCharacter === char.id ? char.color : undefined,
                 }}
               >
-                <span>{characterEmojis[char.id]}</span>
+                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
+                  <Image
+                    src={characterImages[char.id]}
+                    alt={char.name}
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 rounded-full object-contain"
+                  />
+                </span>
                 {char.name}
               </button>
             ))}
@@ -316,10 +561,16 @@ export default function CharactersPage() {
                         {chapter.characters.map((charId) => (
                           <span
                             key={charId}
-                            className="text-xl opacity-70"
+                            className="opacity-80"
                             title={getCharacterById(charId)?.name}
                           >
-                            {characterEmojis[charId]}
+                            <Image
+                              src={characterImages[charId]}
+                              alt={getCharacterById(charId)?.name ?? "Character"}
+                              width={24}
+                              height={24}
+                              className="h-6 w-6 rounded-full object-contain"
+                            />
                           </span>
                         ))}
                       </div>
@@ -415,10 +666,16 @@ export default function CharactersPage() {
                     transition={{ delay: index * 0.1 }}
                   >
                     <div
-                      className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-3xl md:text-4xl mx-auto mb-2"
+                      className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center mx-auto mb-2 bg-white/10"
                       style={{ backgroundColor: char.color + "40" }}
                     >
-                      {characterEmojis[char.id]}
+                      <Image
+                      src={characterImages[char.id]}
+                      alt={char.name}
+                      width={72}
+                      height={72}
+                      className="h-12 w-12 md:h-14 md:w-14 rounded-full object-contain"
+                    />
                     </div>
                     <p className="text-sm font-medium">{char.name}</p>
                   </motion.div>
@@ -441,8 +698,14 @@ export default function CharactersPage() {
             <div className="bg-gradient-to-br from-[#F5EFD4] to-white rounded-3xl p-8 md:p-12 shadow-soft">
               <div className="flex justify-center gap-2 mb-6">
                 {characters.map((char) => (
-                  <span key={char.id} className="text-3xl">
-                    {characterEmojis[char.id]}
+                  <span key={char.id} className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
+                    <Image
+                      src={characterImages[char.id]}
+                      alt={char.name}
+                      width={72}
+                      height={72}
+                      className="h-12 w-12 md:h-14 md:w-14 rounded-full object-contain"
+                    />
                   </span>
                 ))}
               </div>

@@ -1,8 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { characters } from "@/app/lib/constants/characters";
+
+const characterImages: Record<string, string> = {
+  noor: "/images/characters/noor-head.png",
+  adam: "/images/characters/adam-head.png",
+  hana: "/images/characters/hana-head.png",
+  mansour: "/images/characters/mansour-head.png",
+};
 
 export default function CharactersPreview() {
   return (
@@ -34,10 +42,13 @@ export default function CharactersPreview() {
                 className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl shadow-lg"
                 style={{ backgroundColor: character.color }}
               >
-                {character.id === "noor" && "👨‍🏫"}
-                {character.id === "adam" && "👦"}
-                {character.id === "hana" && "👧"}
-                {character.id === "mansour" && "🧒"}
+                <Image
+                  src={characterImages[character.id] ?? ""}
+                  alt={`${character.name} avatar`}
+                  width={72}
+                  height={72}
+                  className="h-[72px] w-[72px] rounded-full object-contain"
+                />
               </div>
 
               {/* Name */}
