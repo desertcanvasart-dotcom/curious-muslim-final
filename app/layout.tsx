@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   keywords:
     "Islamic books for children, Seerah for kids, Muslim children stories, Prophet Muhammad, Islamic education",
   authors: [{ name: "Curious Muslim" }],
+  icons: {
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
   openGraph: {
     title: "Curious Muslim | Stories of the Prophets",
     description: "Beautiful Islamic stories for Muslim children",

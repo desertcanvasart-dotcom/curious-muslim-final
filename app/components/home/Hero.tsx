@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 
 export default function Hero() {
@@ -68,23 +69,19 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Content - Book Mockup Placeholder */}
+          {/* Right Content - Hero Image */}
           <div className="relative animate-fade-in">
             <div className="relative mx-auto max-w-md">
-              {/* Book Cover Placeholder */}
-              <div className="bg-white rounded-2xl shadow-2xl p-8 transform hover:scale-105 transition-transform duration-300">
-                <div className="aspect-[3/4] bg-gradient-to-br from-[#F5EFD4] to-[#A4C997] rounded-xl flex flex-col items-center justify-center p-8">
-                  <div className="text-7xl mb-4">🌙</div>
-                  <h3 className="text-2xl font-heading font-bold text-[#3D5A6C] text-center mb-2">
-                    Stories of the Prophets
-                  </h3>
-                  <p className="text-lg text-[#5C7A4B] text-center mb-4">
-                    Prophet Muhammad ﷺ
-                  </p>
-                  <p className="text-sm text-gray-600 text-center">
-                    Told by Noor · Illustrated by Laila
-                  </p>
-                </div>
+              {/* Image with Frame */}
+              <div className="bg-white rounded-2xl shadow-2xl p-4 transform hover:scale-105 transition-transform duration-300">
+                <Image
+                  src="/images/hero-image.png"
+                  alt="Curious Muslim - Stories of the Prophets"
+                  width={600}
+                  height={600}
+                  className="w-full h-auto rounded-xl"
+                  priority
+                />
               </div>
 
               {/* Floating Elements */}

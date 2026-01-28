@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import Navigation from "./Navigation";
 import { useHeaderStore } from "@/app/lib/stores/header-store";
@@ -51,15 +52,15 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            className="hover:opacity-80 transition-opacity"
           >
-            <span className="text-4xl">🌙</span>
-            <div>
-              <h1 className="text-2xl font-heading font-bold text-primary mb-0">
-                Curious Muslim
-              </h1>
-              <p className="text-xs text-brand-sage-green -mt-1">Stories</p>
-            </div>
+            <Image
+              src="/images/logo.png"
+              alt="Curious Muslim Logo"
+              width={80}
+              height={80}
+              className="object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
